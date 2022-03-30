@@ -1,4 +1,7 @@
-let myLibrary = [{author: 'Alexandre Dumas', title: 'The Count of Monte Cristo', pages: 1276}];
+let myLibrary = [];
+
+const submitButton = document.querySelector('.submit');
+const addBookButton = document.querySelector('.add-book');
 
 function Book(author, title, pages) {
     this.author = author;
@@ -7,11 +10,12 @@ function Book(author, title, pages) {
 }
 
 function addBookToLibrary() {
-    const author = prompt('Author: ');
-    const title = prompt('Title: ');
-    const pages = prompt('Number of pages: ');
-    const book = new Book(author, title, pages);
+    let author = document.querySelector('#author').value;
+    let title = document.querySelector('#title').value;
+    let pages = +document.querySelector('#pages').value;
+    let book = new Book(author, title, pages);
     myLibrary.push(book);
+    console.log(myLibrary);
 }
 
 function displayLibrary() {
@@ -39,9 +43,22 @@ function displayLibrary() {
     }
 }
 
-const addBookButton = document.querySelector('.add-book');
-addBookButton.addEventListener('click', () => {
-    const form = document.querySelector('form');
-    form.classList.toggle('show');
+function emptyForm() {
+    document.querySelector('#author').value = '';
+    document.querySelector('#title').value = '';
+    document.querySelector('#pages').value = '';
+}
+
+function toggleForm() {
+    document.querySelector('form').classList.toggle('show');
     document.querySelector('.main-content').classList.toggle('blur');
+}
+
+addBookButton.addEventListener('click', toggleForm);
+
+submitButton.addEventListener('click', () => {
+    addBookToLibrary();
+    emptyForm();
+    toggleForm();
+    displayLibrary();
 });
