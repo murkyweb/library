@@ -4,7 +4,8 @@
     box-sizing: border-box;
 }
 
-button {
+button.add-book,
+button.submit {
     border: none;
     border-radius: 5px;
     background-color: black;

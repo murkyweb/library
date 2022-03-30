@@ -15,7 +15,6 @@ function addBookToLibrary() {
     let pages = +document.querySelector('#pages').value;
     let book = new Book(author, title, pages);
     myLibrary.push(book);
-    console.log(myLibrary);
 }
 
 function displayLibrary() {
@@ -27,18 +26,28 @@ function displayLibrary() {
             let cardAuthor = document.createElement('p');
             let cardTitle = document.createElement('p');
             let cardPages = document.createElement('p');
+            let deleteButton = document.createElement('button');
 
             cardAuthor.innerText = myLibrary[i].author;
             cardTitle.innerText = myLibrary[i].title;
             cardPages.innerText = myLibrary[i].pages;
+            deleteButton.innerText = 'X';
+            deleteButton.classList.add('delete');
 
             card.classList.add('card');
+            card.setAttribute('data-key', i);
+
             card.appendChild(cardAuthor);
             card.appendChild(cardTitle);
             card.appendChild(cardPages);
+            card.appendChild(deleteButton);
             
             container.appendChild(card);
             myLibrary[i].show = true;
+            deleteButton.addEventListener('click', () => {
+                let element = (document.querySelector(`.card[data-key='${i}']`));
+                container.removeChild(element);
+            });
         }
     }
 }
@@ -62,3 +71,4 @@ submitButton.addEventListener('click', () => {
     toggleForm();
     displayLibrary();
 });
+
