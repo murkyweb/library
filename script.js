@@ -1,4 +1,5 @@
-let myLibrary = [{author: 'Alexandre Dumas', title: 'The Count of Monte Cristo', pages: 1276}]
+let myLibrary = [{author: 'Alexandre Dumas', title: 'The Count of Monte Cristo', pages: 1276}];
+
 function Book(author, title, pages) {
     this.author = author;
     this.title = title;
@@ -37,3 +38,9 @@ function displayLibrary() {
         }
     }
 }
+
+const addBookButton = document.querySelector('.add-book');
+addBookButton.addEventListener('click', () => {
+    const form = document.querySelector('form');
+    form.classList.toggle('show');
+});
