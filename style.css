@@ -31,6 +31,7 @@ form.show {
     top: 10vh;
     left: calc(50% - (600px/2));
     border: 1px solid #D6D9DC;
+    filter: blur(0);
 }
 
 .form-row {
@@ -48,4 +49,8 @@ form.show {
     width: 140px;
     padding-right: 20px;
     text-align: right;
+}
+
+.blur {
+    filter: blur(2px);
 }

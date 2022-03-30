@@ -43,4 +43,5 @@ const addBookButton = document.querySelector('.add-book');
 addBookButton.addEventListener('click', () => {
     const form = document.querySelector('form');
     form.classList.toggle('show');
+    document.querySelector('.main-content').classList.toggle('blur');
 });
