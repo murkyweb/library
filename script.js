@@ -89,6 +89,10 @@ document.addEventListener('click', (e) => {
         e.target.innerText = book.read ? 'Read' : 'Not read';
         e.target.style.backgroundColor = book.read ? '#4ade80' : '#D00000'; 
     }
+    
+    if (e.target.matches('.on')) {
+        toggleForm();
+    }
 });
 
 addBookButton.addEventListener('click', toggleForm);
