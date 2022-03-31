@@ -37,7 +37,7 @@ form.show {
     padding: 20px;
     gap: 20px;
     position: fixed;
-    top: 10vh;
+    top: 15vh;
     left: calc(50% - (270px/2));
     border-radius: 15px;
     color: var(--dark-text-color);
@@ -75,7 +75,8 @@ input[type="checkbox"] {
     width: 20px;
 }
 
-button.submit {
+button.submit,
+button.cancel {
     border: none;
     border-radius: 7px;
     background-color: var(--dark-bg-color);
@@ -83,6 +84,10 @@ button.submit {
     padding: 10px 20px;
     font-size: 1.5rem;
     font-weight: 400;
+}
+
+button.cancel {
+    background-color: #D00000;
 }
 
 .main-content {
@@ -140,11 +145,6 @@ button.submit {
     right: 5px;
 }
 
-.delete:hover {
-    cursor: pointer;
-    filter: invert(25%);
-}
-
 .header {
     font-size: 3rem;
     font-weight: 900;
@@ -164,9 +164,7 @@ button.submit {
     padding: 15px 25px;
 }
 
-.add-book:hover,
-.read-button:hover,
-button.submit:hover {
+button:hover {
     cursor: pointer;
     opacity: 0.7;
 }
@@ -174,10 +172,14 @@ button.submit:hover {
 .mask.on {
     background: rgba(0, 0, 0, 0.8);
     position: fixed;
-    height: 100vh;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
 }
 
+.error {
+    color: #D00000;
+    font-size: 1.1rem;
+    font-weight: 400;
+}

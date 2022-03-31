@@ -72,6 +72,20 @@ function update() {
     }
 }
 
+function displayErrorMessage() {
+    if(!document.querySelector('.error')) {
+        let referenceNode = document.querySelector('.submit');
+        let errorMessage = document.createElement('p');
+        errorMessage.classList.add('error');
+        errorMessage.innerText = 'Please fill in all the fields.';
+        referenceNode.parentNode.insertBefore(errorMessage, referenceNode);
+    } 
+}
+
+function removeErrorMessage() {
+    let errorMessage = document.querySelector('.error');
+    document.querySelector('form').removeChild(errorMessage);
+}
 
 document.addEventListener('click', (e) => {
     const container = document.querySelector('.container');
@@ -90,7 +104,9 @@ document.addEventListener('click', (e) => {
         e.target.style.backgroundColor = book.read ? '#4ade80' : '#D00000'; 
     }
     
-    if (e.target.matches('.on')) {
+    if (e.target.matches('.on') || e.target.matches('.cancel')) {
+        emptyForm();
+        removeErrorMessage();
         toggleForm();
     }
 });
@@ -107,5 +123,9 @@ submitButton.addEventListener('click', () => {
         toggleForm();
         displayLibrary();
         update();
-    }
+        removeErrorMessage();
+    } else {
+        displayErrorMessage();
+    } 
 });
+
