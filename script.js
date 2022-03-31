@@ -35,8 +35,7 @@ function displayLibrary() {
             cardTitle.innerText = myLibrary[i].title;
             cardPages.innerText = `${myLibrary[i].pages} pgs`;
             readButton.innerText = myLibrary[i].read ? 'Read' : 'Not read';
-            readButton.style.backgroundColor = myLibrary[i].read ? 'green' : 'red';
-            deleteButton.innerText = 'X';
+            readButton.style.backgroundColor = myLibrary[i].read ? '#4ade80' : '#D00000';
 
             card.classList.add('card');
             deleteButton.classList.add('delete');
@@ -88,7 +87,7 @@ document.addEventListener('click', (e) => {
         let book = myLibrary[e.target.parentNode.dataset.key];
         book.read = book.read ? false : true;
         e.target.innerText = book.read ? 'Read' : 'Not read';
-        e.target.style.backgroundColor = book.read ? 'green' : 'red'; 
+        e.target.style.backgroundColor = book.read ? '#4ade80' : '#D00000'; 
     }
 });
 

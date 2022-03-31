@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+:root {
+    --dark-text-color: #0f172a;
+    --light-text-color: #f8fafc;
+    --light-bg-color: #eff6ff;
+    --dark-bg-color: #111827;
+}
+
+
 * {
     margin: 0;
     padding: 0;
@@ -9,24 +17,12 @@
 body {
     height: 100vh;
     font-family: 'Roboto', sans-serif;
-}
-
-button.add-book,
-button.submit {
-    border: none;
-    border-radius: 5px;
-    background-color: black;
-    color: white;
-    padding: 15px 30px;
-    font-size: 1.1rem;
+    word-wrap: break-word;
+    background-color: var(--light-bg-color);
 }
 
 button {
     font-family: 'Roboto', sans-serif;
-}
-
-button:hover {
-    background-color: brown;
 }
 
 form {
@@ -72,30 +68,39 @@ form.show {
 
 .main-content {
     display: grid;
-    gap: 10px;
+    gap: 20px;
 }
 
 .container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 10px;
+    gap: 20px;
+    padding: 20px;
 }
 
 .card {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    font-size: 1rem;
-    font-style: italic;
+    font-size: 1.1rem;
     font-weight: 400;
-    color: white;
-    background-color:slateblue;
-    border-radius: 10px;
-    padding: 10px;
+    color: var(--light-text-color);
+    background-color: #164e63;
+    border-radius: 5px;
+    padding: 20px 30px;
     position: relative;
 }
 
-.card > button {
+.card > p:nth-child(1) {
+    flex: 1;
+}
+
+.card > p:nth-child(2) {
+    font-style: italic;
+    font-weight: 300;
+}
+
+.card > .read-button {
     width: 150px;
     border: none;
     border-radius: 10px;
@@ -105,10 +110,41 @@ form.show {
 }
 
 .card > .delete {
+    width: 24px;
+    height: 24px;
     position: absolute;
-    border-radius: 50%;
-    color: red;
-    padding: 2px;
-    width: 25px;
-    right: 10px;
+    background: no-repeat center url(icons/close-box.svg);
+    border: none;
+    top: 5px;
+    right: 5px;
+}
+
+.delete:hover {
+    cursor: pointer;
+    filter: invert(25%);
+}
+
+.header {
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--light-text-color);
+    background-color: var(--dark-bg-color);
+    padding: 20px;
+}
+
+.add-book {
+    justify-self: center;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--light-text-color);
+    background-color: #2563eb;
+    padding: 15px 25px;
+}
+
+.add-book:hover,
+.read-button:hover {
+    cursor: pointer;
+    opacity: 0.7;
 }
