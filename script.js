@@ -31,10 +31,11 @@ function displayLibrary() {
             let readButton = document.createElement('button');
             let deleteButton = document.createElement('button');
 
-            cardAuthor.innerText = myLibrary[i].author;
+            cardAuthor.innerText = `by ${myLibrary[i].author}`;
             cardTitle.innerText = myLibrary[i].title;
-            cardPages.innerText = myLibrary[i].pages;
+            cardPages.innerText = `${myLibrary[i].pages} pgs`;
             readButton.innerText = myLibrary[i].read ? 'Read' : 'Not read';
+            readButton.style.backgroundColor = myLibrary[i].read ? 'green' : 'red';
             deleteButton.innerText = 'X';
 
             card.classList.add('card');
@@ -43,8 +44,8 @@ function displayLibrary() {
 
             card.setAttribute('data-key', i);
 
-            card.appendChild(cardAuthor);
             card.appendChild(cardTitle);
+            card.appendChild(cardAuthor);
             card.appendChild(cardPages);
             card.appendChild(readButton);
             card.appendChild(deleteButton);
@@ -58,7 +59,8 @@ function displayLibrary() {
 
             readButton.addEventListener('click', () => {
                 myLibrary[i].read = (myLibrary[i].read) ? false : true;
-                readButton.innerText = myLibrary[i].read ? 'Read' : 'Not read'; 
+                readButton.innerText = myLibrary[i].read ? 'Read' : 'Not read';
+                readButton.style.backgroundColor = myLibrary[i].read ? 'green' : 'red'; 
             });
         }
     }
@@ -79,8 +81,15 @@ function toggleForm() {
 addBookButton.addEventListener('click', toggleForm);
 
 submitButton.addEventListener('click', () => {
-    addBookToLibrary();
-    emptyForm();
-    toggleForm();
-    displayLibrary();
+    let author = document.querySelector('#author').value;
+    let title = document.querySelector('#title').value;
+    let pages = document.querySelector('#pages').value;
+    if (author && title && pages) {
+        addBookToLibrary();
+        emptyForm();
+        toggleForm();
+        displayLibrary();
+    }
 });
+
+
