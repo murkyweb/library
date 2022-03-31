@@ -40,9 +40,7 @@ function displayLibrary() {
 
             card.classList.add('card');
             deleteButton.classList.add('delete');
-            readButton.classList.add('.read-button');
-
-            card.setAttribute('data-key', i);
+            readButton.classList.add('read-button');
 
             card.appendChild(cardTitle);
             card.appendChild(cardAuthor);
@@ -52,16 +50,6 @@ function displayLibrary() {
             
             container.appendChild(card);
             myLibrary[i].show = true;
-            deleteButton.addEventListener('click', () => {
-                let element = document.querySelector(`.card[data-key='${i}']`);
-                container.removeChild(element);
-            });
-
-            readButton.addEventListener('click', () => {
-                myLibrary[i].read = (myLibrary[i].read) ? false : true;
-                readButton.innerText = myLibrary[i].read ? 'Read' : 'Not read';
-                readButton.style.backgroundColor = myLibrary[i].read ? 'green' : 'red'; 
-            });
         }
     }
 }
@@ -78,6 +66,32 @@ function toggleForm() {
     document.querySelector('.main-content').classList.toggle('blur');
 }
 
+function update() {
+    let cards = Array.from(document.querySelectorAll('.card'));
+    for(let i = 0; i < cards.length; i++) {
+        cards[i].setAttribute('data-key', i);
+    }
+}
+
+
+document.addEventListener('click', (e) => {
+    const container = document.querySelector('.container');
+
+    if (e.target.matches('.delete')) {
+        let card = e.target.parentNode;
+        container.removeChild(card);
+        myLibrary.splice(card.dataset.key, 1);
+        update();
+    }
+
+    if (e.target.matches('.read-button')) {
+        let book = myLibrary[e.target.parentNode.dataset.key];
+        book.read = book.read ? false : true;
+        e.target.innerText = book.read ? 'Read' : 'Not read';
+        e.target.style.backgroundColor = book.read ? 'green' : 'red'; 
+    }
+});
+
 addBookButton.addEventListener('click', toggleForm);
 
 submitButton.addEventListener('click', () => {
@@ -89,7 +103,6 @@ submitButton.addEventListener('click', () => {
         emptyForm();
         toggleForm();
         displayLibrary();
+        update();
     }
 });
-
-
