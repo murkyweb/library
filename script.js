@@ -62,7 +62,7 @@ function emptyForm() {
 
 function toggleForm() {
     document.querySelector('form').classList.toggle('show');
-    document.querySelector('.main-content').classList.toggle('blur');
+    document.querySelector('.mask').classList.toggle('on');
 }
 
 function update() {
