@@ -84,7 +84,9 @@ function displayErrorMessage() {
 
 function removeErrorMessage() {
     let errorMessage = document.querySelector('.error');
-    document.querySelector('form').removeChild(errorMessage);
+    if (errorMessage) {
+        document.querySelector('form').removeChild(errorMessage);
+    }
 }
 
 document.addEventListener('click', (e) => {
