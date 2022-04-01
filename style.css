@@ -87,7 +87,7 @@ button.cancel {
 }
 
 button.cancel {
-    background-color: #D00000;
+    background-color: #ef4444;
 }
 
 .main-content {
@@ -157,11 +157,11 @@ button.cancel {
     justify-self: center;
     border: none;
     border-radius: 10px;
-    font-size: 1.2rem;
-    font-weight: 500;
+    font-size: 1.3rem;
+    font-weight: 600;
     color: var(--light-text-color);
     background-color: #2563eb;
-    padding: 15px 25px;
+    padding: 15px 20px;
 }
 
 button:hover {
